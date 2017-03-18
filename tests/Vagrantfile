@@ -6,7 +6,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "deb8-base"
+  config.vm.box = "debian/jessie64"
   config.vm.hostname = "workstation-xfce4-test"
 
   config.vm.provider :libvirt do |libvirt|
@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     libvirt.memory = 2048
   end
 
-  config.vm.synced_folder './', '/vagrant', type: '9p', disabled: false, accessmode: "squash", owner: "vagrant"
+  #config.vm.synced_folder './', '/vagrant', type: '9p', disabled: false, accessmode: "squash", owner: "vagrant"
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "test.yml"
